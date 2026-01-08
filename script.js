@@ -11,17 +11,24 @@ const randomBtn = document.getElementById('randomBtn');
 
 function renderGames(list) {
     grid.innerHTML = ''; 
+    
     list.forEach(game => {
         const container = document.createElement('a');
         container.className = 'game-container';
         container.href = game.url;
         container.target = "_blank";
         
-        const screenshot = `https://api.microlink.io/?url=${encodeURIComponent(game.url)}&screenshot=true&embed=screenshot.url`;
+        // We added &wait=2 and &cache=false to give Vercel time to load 
+        // before the API takes the "photo"
+        const screenshot = `https://api.microlink.io/?url=${encodeURIComponent(game.url)}&screenshot=true&meta=false&embed=screenshot.url&wait=2`;
 
         container.innerHTML = `
             <div class="game-card">
-                <img src="${screenshot}" alt="${game.title}" loading="lazy">
+                <img src="${screenshot}" 
+                     alt="${game.title}" 
+                     onload="this.style.opacity='1'"
+                     style="opacity:0; transition: opacity 0.5s;"
+                     onerror="this.src='https://via.placeholder.com/300/351d5d/ccff00?text=Reloading...'">
             </div>
             <div class="game-label">${game.title}</div>
         `;
@@ -42,4 +49,5 @@ searchInput.addEventListener('input', (e) => {
     renderGames(filtered);
 });
 
+// Initial load
 renderGames(myGames);
