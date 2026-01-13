@@ -1,12 +1,13 @@
-// 1. YOUR GAME DATABASE
-// Add new games to this list in the future
+// 1. GAME DATABASE
+// Add your newest games to the bottom of this list
 const myGames = [
     { title: "Neon Grid", url: "https://neongrid.vercel.app/" },
     { title: "The Void", url: "https://thevoid.vercel.app/" },
     { title: "Connect Four", url: "https://connectfour-new-update.vercel.app/" },
     { title: "Geometry Flap", url: "https://geometryflap.vercel.app/" },
     { title: "Get Riz", url: "https://getriz.vercel.app/" },
-    { title: "SizeShift Beta", url: "https://sizeshift-beta.vercel.app/" }
+    { title: "SizeShift Beta", url: "https://sizeshift-beta.vercel.app/" },
+    { title: "Infinitic Eight", url: "https://infinitic-eight.vercel.app/" }
 ];
 
 // 2. DOM ELEMENTS
@@ -16,10 +17,10 @@ const randomBtn = document.getElementById('randomBtn');
 
 /**
  * 3. RENDER FUNCTION
- * Builds the HTML for each game card and handles the API screenshots
+ * Creates the HTML for each game card and pulls the screenshot.
  */
 function renderGames(list) {
-    grid.innerHTML = ''; // Clear the grid first
+    grid.innerHTML = ''; // Clear current grid
     
     list.forEach(game => {
         const container = document.createElement('a');
@@ -27,7 +28,7 @@ function renderGames(list) {
         container.href = game.url;
         container.target = "_blank";
         
-        // WordPress mShots API: Reliable, fast, and bypasses most Vercel blocks
+        // WordPress mShots API: Uses a reliable screenshot engine
         const screenshot = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(game.url)}?w=400`;
 
         container.innerHTML = `
@@ -46,7 +47,7 @@ function renderGames(list) {
 
 /**
  * 4. RANDOM GAME LOGIC
- * Picks one game from the array and opens it in a new tab
+ * Picks a random game from the list and opens it in a new tab.
  */
 randomBtn.addEventListener('click', () => {
     const randomGame = myGames[Math.floor(Math.random() * myGames.length)];
@@ -55,7 +56,7 @@ randomBtn.addEventListener('click', () => {
 
 /**
  * 5. SEARCH LOGIC
- * Filters the game list in real-time as you type
+ * Filters the library instantly as you type in the search bar.
  */
 searchInput.addEventListener('input', (e) => {
     const query = e.target.value.toLowerCase();
@@ -66,5 +67,5 @@ searchInput.addEventListener('input', (e) => {
 });
 
 // 6. INITIAL LOAD
-// Display all games when the page first opens
+// Renders all games when the page first opens
 renderGames(myGames);
