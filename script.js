@@ -9,7 +9,7 @@ const myGames = [
     { title: "Infinitic Eight", url: "https://infinitic-eight.vercel.app/" },
     { title: "Snake UI", url: "https://snakeui.vercel.app/" },
     { title: "Vortex Race", url: "https://vortexrace.vercel.app/" },
-    { title: "Rossy Croad", url: "https://rossycroad.vercel.app/" }
+    { title: "Rossy Road", url: "https://rossycroad.vercel.app/" }
 ];
 
 const grid = document.getElementById('gameGrid');
