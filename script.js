@@ -8,7 +8,8 @@ const myGames = [
     { title: "SizeShift Beta", url: "https://sizeshift-beta.vercel.app/" },
     { title: "Infinitic Eight", url: "https://infinitic-eight.vercel.app/" },
     { title: "Snake UI", url: "https://snakeui.vercel.app/" },
-    { title: "Vortex Race", url: "https://vortexrace.vercel.app/" }
+    { title: "Vortex Race", url: "https://vortexrace.vercel.app/" },
+    { title: "Rossy Road", url: "https://rossycroad.vercel.app/" }
 ];
 
 const grid = document.getElementById('gameGrid');
@@ -16,7 +17,7 @@ const searchInput = document.getElementById('gameSearch');
 const randomBtn = document.getElementById('randomBtn');
 
 /**
- * 2. RENDER FUNCTION (Optimized with Staggered Loading)
+ * 2. RENDER FUNCTION (Optimized for 10+ Games)
  */
 function renderGames(list) {
     grid.innerHTML = ''; 
@@ -27,7 +28,7 @@ function renderGames(list) {
         container.href = game.url;
         container.target = "_blank";
         
-        // WordPress mShots API
+        // WordPress mShots API for live screenshots
         const screenshot = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(game.url)}?w=400`;
 
         container.innerHTML = `
@@ -43,11 +44,11 @@ function renderGames(list) {
         `;
         grid.appendChild(container);
 
-        // STAGGERED LOADING: Prevents the page from freezing on join
+        // STAGGERED LOADING: Prevents browser lock-up by loading one every 100ms
         setTimeout(() => {
             const img = container.querySelector('.lazy-game-img');
             if(img) img.src = img.getAttribute('data-src');
-        }, index * 100); // 100ms delay per card
+        }, index * 100); 
     });
 }
 
@@ -60,7 +61,7 @@ randomBtn.addEventListener('click', () => {
 });
 
 /**
- * 4. SEARCH (With 300ms Debounce)
+ * 4. SEARCH (Debounced)
  */
 let searchTimeout;
 searchInput.addEventListener('input', (e) => {
