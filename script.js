@@ -10,7 +10,8 @@ const myGames = [
     { title: "Snake UI", url: "https://snakeui.vercel.app/" },
     { title: "Vortex Race", url: "https://vortexrace.vercel.app/" },
     { title: "Rossy Road", url: "https://rossycroad.vercel.app/" },
-    { title: "Ponger", url: "https://ponger.vercel.app/" }
+    { title: "Ponger", url: "https://ponger.vercel.app/" },
+    { title: "Chopsticks", url: "https://chopsticks-iota.vercel.app/" }
 ];
 
 const grid = document.getElementById('gameGrid');
@@ -18,7 +19,7 @@ const searchInput = document.getElementById('gameSearch');
 const randomBtn = document.getElementById('randomBtn');
 
 /**
- * 2. RENDER FUNCTION (Optimized)
+ * 2. RENDER FUNCTION (Optimized with Anti-Freeze Logic)
  */
 function renderGames(list) {
     grid.innerHTML = ''; 
@@ -29,7 +30,7 @@ function renderGames(list) {
         container.href = game.url;
         container.target = "_blank";
         
-        // WordPress mShots API
+        // WordPress mShots API for live screenshots
         const screenshot = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(game.url)}?w=400`;
 
         container.innerHTML = `
@@ -45,7 +46,7 @@ function renderGames(list) {
         `;
         grid.appendChild(container);
 
-        // STAGGERED LOADING: Prevents browser lock-up
+        // STAGGERED LOADING: Prevents browser lock-up by queuing images
         setTimeout(() => {
             const img = container.querySelector('.lazy-game-img');
             if(img) img.src = img.getAttribute('data-src');
