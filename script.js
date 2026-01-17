@@ -1,5 +1,11 @@
 const myGames = [
     { 
+        title: "Space Deporters", 
+        url: "https://spaceinvaders-pi.vercel.app/",
+        about: "The quintessential arcade shooter. Defend Earth from waves of descending aliens.",
+        tips: "Hide behind the bunkers to dodge shots, but remember—they take damage too. Target the red UFO at the top for bonus points!"
+    },
+    { 
         title: "Infinitic Eight", 
         url: "https://infinitic-eight.vercel.app/",
         about: "Infinite Tic-Tac-Toe. The board grows as you play, requiring endless strategy.",
