@@ -2,43 +2,49 @@ const myGames = [
     { 
         title: "Space Deporters", 
         url: "https://spaceinvaders-pi.vercel.app/",
-        about: "The quintessential arcade shooter. Defend Earth from waves of descending aliens.",
-        tips: "Hide behind the bunkers to dodge shots, but remember—they take damage too. Target the red UFO at the top for bonus points!"
+        about: "Defend Earth from alien waves in this quintessential arcade shooter.",
+        tips: "Hide behind bunkers, but remember they take damage. Hit the red UFO for high scores!"
     },
     { 
         title: "Infinitic Eight", 
         url: "https://infinitic-eight.vercel.app/",
-        about: "Infinite Tic-Tac-Toe. The board grows as you play, requiring endless strategy.",
-        tips: "Don't just look at the 3x3 center; focus on building long-range diagonal traps."
+        about: "Infinite Tic-Tac-Toe. The board grows as you play.",
+        tips: "Focus on long-range diagonal traps beyond the center 3x3 grid."
     },
     { 
         title: "Vortex Race", 
         url: "https://vortexrace.vercel.app/",
-        about: "2D Car Avoidance Racer. Dodge traffic within a shifting high-speed vortex.",
-        tips: "Stay in the middle lanes—it gives you the most room to swerve left or right instantly."
+        about: "2D Car Avoidance. Navigate traffic in a shifting vortex.",
+        tips: "Stay in the middle lanes for maximum reaction time."
     },
-    { title: "Neon Grid", url: "https://neongrid.vercel.app/", about: "Rhythmic reflex game in a pulsing synthwave world.", tips: "Watch the grid lines ahead of you to anticipate where the next turn will trigger." },
-    { title: "The Void", url: "https://thevoid.vercel.app/", about: "Dark exploration survival. Light is your only defense.", tips: "Conserve your energy. Only sprint when you see eyes in the distance." },
-    { title: "Connect Four", url: "https://connectfour-new-update.vercel.app/", about: "Classic 4-in-a-row strategy game.", tips: "The first player to control the center column usually has the win advantage." },
-    { title: "Geometry Flap", url: "https://geometryflap.vercel.app/", about: "Geometric side-scrolling flight challenge.", tips: "Rhythm is key. Practice small, consistent taps rather than holding down." },
-    { title: "Get Riz", url: "https://getriz.vercel.app/", about: "Fast-paced momentum-based arcade challenge.", tips: "Speed builds your score multiplier. Never stop moving!" },
-    { title: "SizeShift Beta", url: "https://sizeshift-beta.vercel.app/", about: "Puzzle platforming where your size dictates interaction.", tips: "Shift to 'Tiny' mid-jump to get a small boost in height and distance." },
-    { title: "Snake UI", url: "https://snakeui.vercel.app/", about: "Modern Snake with wrapping screen borders.", tips: "Use the wall-wrap to teleport across the screen and escape your own tail." },
-    { title: "Rossy Road", url: "https://rossycroad.vercel.app/", about: "Endless crosser through dangerous traffic.", tips: "The screen scrolls at a fixed rate—don't hesitate too long!" },
-    { title: "Ponger", url: "https://ponger.vercel.app/", about: "Physics-based Pong variant.", tips: "Strike the ball with the corner of your paddle to add curve." },
-    { title: "Chopsticks", url: "https://chopsticks-iota.vercel.app/", about: "Strategy hand game digital version.", tips: "Keep counts low and force your opponent into awkward splits." },
-    { title: "Galaga Evolution", url: "https://galagaevolution.vercel.app/", about: "Upgraded space combat with new waves.", tips: "Rescue your captured ships for double firepower!" },
-    { title: "Asteroids", url: "https://asteroids-lilac.vercel.app/", about: "Survival among the stars. Shoot rocks, avoid collisions.", tips: "Tap thrusters for control; momentum is hard to stop." },
-    { title: "Astro Breakout", url: "https://astrobreakout.vercel.app/", about: "Gravity-shifting brick breaker.", tips: "Gravity flips when hitting walls—prepare for speed changes." }
+    { title: "Neon Grid", url: "https://neongrid.vercel.app/", about: "Rhythmic reflex game in a synthwave world.", tips: "Watch the grid lines ahead to anticipate turns." },
+    { title: "The Void", url: "https://thevoid.vercel.app/", about: "Dark survival. Your light is your only defense.", tips: "Sprint only when necessary to conserve energy." },
+    { title: "Connect Four", url: "https://connectfour-new-update.vercel.app/", about: "Classic strategy 4-in-a-row.", tips: "Control the center column early to dominate the board." },
+    { title: "Geometry Flap", url: "https://geometryflap.vercel.app/", about: "Geometric flight challenge.", tips: "Consistent, small taps are more reliable than long holds." },
+    { title: "Get Riz", url: "https://getriz.vercel.app/", about: "Fast-paced arcade momentum.", tips: "Speed increases your score multiplier—keep moving!" },
+    { title: "SizeShift Beta", url: "https://sizeshift-beta.vercel.app/", about: "Puzzle platformer using size shifting.", tips: "Shift to Tiny mid-jump for an extra distance boost." },
+    { title: "Snake UI", url: "https://snakeui.vercel.app/", about: "Modern Snake with wall-wrapping.", tips: "Wall-teleport to escape your own tail when the board gets crowded." },
+    { title: "Rossy Road", url: "https://rossycroad.vercel.app/", about: "Endless traffic crosser.", tips: "The screen scrolls at a fixed speed; hesitation is fatal." },
+    { title: "Ponger", url: "https://ponger.vercel.app/", about: "Physics-based Pong variant.", tips: "Hit the ball with the paddle corner to add curve/spin." },
+    { title: "Chopsticks", url: "https://chopsticks-iota.vercel.app/", about: "Strategy hand counting game.", tips: "Force your opponent into high-count splits to limit their moves." },
+    { title: "Galaga Evolution", url: "https://galagaevolution.vercel.app/", about: "Upgraded retro space combat.", tips: "Rescue captured ships for double firepower!" },
+    { title: "Asteroids", url: "https://asteroids-lilac.vercel.app/", about: "Survival among space debris.", tips: "Momentum is your enemy; tap thrusters to keep control." },
+    { title: "Astro Breakout", url: "https://astrobreakout.vercel.app/", about: "Gravity-shifting brick breaker.", tips: "Prepare for ball speed changes when gravity flips." }
 ];
 
 const grid = document.getElementById('gameGrid');
 const searchInput = document.getElementById('gameSearch');
 const randomBtn = document.getElementById('randomBtn');
 const infoBtn = document.getElementById('infoBtn');
+const feedbackBtn = document.getElementById('feedbackBtn');
 const modal = document.getElementById('infoModal');
 const closeBtn = document.querySelector('.close-btn');
 const manualContent = document.getElementById('manualContent');
+
+// Feedback Logic
+feedbackBtn.onclick = () => {
+    window.open("https://game-hub-8af2281a.base44.app/", "_blank");
+};
 
 function showGameInfo(game) {
     manualContent.innerHTML = `
