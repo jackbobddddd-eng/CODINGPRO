@@ -12,7 +12,8 @@ const myGames = [
     { title: "Rossy Road", url: "https://rossycroad.vercel.app/" },
     { title: "Ponger", url: "https://ponger.vercel.app/" },
     { title: "Chopsticks", url: "https://chopsticks-iota.vercel.app/" },
-    { title: "Galaga Evolution", url: "https://galagaevolution.vercel.app/" }
+    { title: "Galaga Evolution", url: "https://galagaevolution.vercel.app/" },
+    { title: "Asteroids", url: "https://asteroids-lilac.vercel.app/" }
 ];
 
 const grid = document.getElementById('gameGrid');
@@ -20,7 +21,7 @@ const searchInput = document.getElementById('gameSearch');
 const randomBtn = document.getElementById('randomBtn');
 
 /**
- * 2. RENDER FUNCTION (Staggered Loading for 13 Games)
+ * 2. RENDER FUNCTION (Optimized for 14+ Games)
  */
 function renderGames(list) {
     grid.innerHTML = ''; 
@@ -47,7 +48,7 @@ function renderGames(list) {
         `;
         grid.appendChild(container);
 
-        // STAGGERED LOADING: Loads one image every 100ms
+        // STAGGERED LOADING: Prevents browser lock-up
         setTimeout(() => {
             const img = container.querySelector('.lazy-game-img');
             if(img) img.src = img.getAttribute('data-src');
@@ -64,7 +65,7 @@ randomBtn.addEventListener('click', () => {
 });
 
 /**
- * 4. SEARCH (Debounced to prevent lag)
+ * 4. SEARCH (Debounced)
  */
 let searchTimeout;
 searchInput.addEventListener('input', (e) => {
