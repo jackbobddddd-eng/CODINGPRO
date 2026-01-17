@@ -14,11 +14,18 @@
             <div class="search-container">
                 <input type="text" id="gameSearch" placeholder="Search games">
                 <button id="randomBtn">Random Game 🎲</button>
+                <button id="infoBtn">Library Guide 📖</button>
             </div>
         </nav>
 
-        <main id="gameGrid" class="poki-grid">
-            </main>
+        <main id="gameGrid" class="poki-grid"></main>
+    </div>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="manualContent"></div>
+        </div>
     </div>
 
     <script src="script.js"></script>
