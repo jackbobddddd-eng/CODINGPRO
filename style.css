@@ -102,7 +102,6 @@ body {
     color: var(--shady-lime);
 }
 
-/* Modal Styling */
 .modal {
     display: none;
     position: fixed;
