@@ -43,7 +43,7 @@ const manualContent = document.getElementById('manualContent');
 
 // Feedback Logic
 feedbackBtn.onclick = () => {
-    window.open("https://game-hub-8af2281a.base44.app/", "_blank");
+    window.open("https://game-hub-copy-6881e699.base44.app", "_blank");
 };
 
 function showGameInfo(game) {
