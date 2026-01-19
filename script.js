@@ -1,6 +1,12 @@
 const myGames = [
     { 
-        title: "Space Deporters", 
+        title: "Quest Weaver", 
+        url: "https://quest-weaver-4d867fcb.base44.app/GameRoom?id=696e6373a0f657d753395923",
+        about: "A multiplayer adventure room where your choices weave the story.",
+        tips: "Communication is key in the GameRoom. Work with your team to unlock the secrets of the weaver!"
+    },
+    { 
+        title: "Space Invaders", 
         url: "https://spaceinvaders-pi.vercel.app/",
         about: "Defend Earth from alien waves in this quintessential arcade shooter.",
         tips: "Hide behind bunkers, but remember they take damage. Hit the red UFO for high scores!"
@@ -41,22 +47,13 @@ const modal = document.getElementById('infoModal');
 const closeBtn = document.querySelector('.close-btn');
 const manualContent = document.getElementById('manualContent');
 
-// Feedback Logic
-feedbackBtn.onclick = () => {
-    window.open("https://game-hub-copy-6881e699.base44.app", "_blank");
-};
+feedbackBtn.onclick = () => { window.open("https://game-hub-8af2281a.base44.app/", "_blank"); };
 
 function showGameInfo(game) {
     manualContent.innerHTML = `
         <h2 class="logo">${game.title.toUpperCase()}</h2>
-        <div class="manual-item">
-            <h3>ABOUT</h3>
-            <p>${game.about}</p>
-        </div>
-        <div class="manual-item">
-            <h3>PRO TIPS</h3>
-            <p>💡 ${game.tips}</p>
-        </div>
+        <div class="manual-item"><h3>ABOUT</h3><p>${game.about}</p></div>
+        <div class="manual-item"><h3>PRO TIPS</h3><p>💡 ${game.tips}</p></div>
     `;
     modal.style.display = "block";
 }
@@ -78,23 +75,17 @@ function renderGames(list) {
         const container = document.createElement('div');
         container.className = 'game-container';
         const screenshot = `https://s.wordpress.com/mshots/v1/${encodeURIComponent(game.url)}?w=400`;
-
         container.innerHTML = `
             <a href="${game.url}" target="_blank" class="game-card">
                 <img data-src="${screenshot}" alt="${game.title}" class="lazy-img" style="opacity:0; transition: 0.5s; width:100%; height:100%; object-fit:cover;">
             </a>
             <div class="game-label">${game.title}</div>
         `;
-        
         container.querySelector('.game-label').onclick = () => showGameInfo(game);
         grid.appendChild(container);
-
         setTimeout(() => {
             const img = container.querySelector('.lazy-img');
-            if(img) {
-                img.src = img.getAttribute('data-src');
-                img.onload = () => img.style.opacity = '1';
-            }
+            if(img) { img.src = img.getAttribute('data-src'); img.onload = () => img.style.opacity = '1'; }
         }, index * 80); 
     });
 }
@@ -103,7 +94,6 @@ infoBtn.onclick = showFullGuide;
 closeBtn.onclick = () => modal.style.display = "none";
 window.onclick = (e) => { if (e.target == modal) modal.style.display = "none"; }
 randomBtn.onclick = () => window.open(myGames[Math.floor(Math.random() * myGames.length)].url, '_blank');
-
 searchInput.oninput = (e) => {
     const query = e.target.value.toLowerCase();
     const filtered = myGames.filter(g => g.title.toLowerCase().includes(query));
