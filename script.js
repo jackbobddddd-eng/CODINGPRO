@@ -7,7 +7,7 @@ const myGames = [
     },
     { 
         title: "Quest Weaver", 
-        url: "https://quest-weaver-4d867fcb.base44.app/GameRoom?id=696e6373a0f657d753395923",
+        url: "https://quest-weaver-copy-42723193.base44.app",
         about: "A multiplayer adventure room where your choices weave the story.",
         tips: "Communication is key in the GameRoom. Work with your team to unlock the secrets of the weaver!"
     },
