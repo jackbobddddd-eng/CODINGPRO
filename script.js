@@ -1,5 +1,11 @@
 const myGames = [
     { 
+        title: "NOT MY GAME", 
+        url: "https://notmygame-eta.vercel.app/",
+        about: "An experimental project outside the usual Shady Games collection.",
+        tips: "Explore with an open mind! This one plays by different rules than the rest of the library."
+    },
+    { 
         title: "Quest Weaver", 
         url: "https://quest-weaver-4d867fcb.base44.app/GameRoom?id=696e6373a0f657d753395923",
         about: "A multiplayer adventure room where your choices weave the story.",
